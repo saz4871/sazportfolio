@@ -1,13 +1,11 @@
 /* Global Styles */
 :root {
-    /* Changed primary color to a vibrant green */
     --primary-color: #00cc66;
     --secondary-color: #1a202c;
     --card-bg: #2d3748;
     --text-color: #e2e8f0;
     --light-text: #a0aec0;
     --border-color: #4a5568;
-    /* Changed button color to a matching green */
     --button-green: #006633;
     --footer-bg: #171923;
 }
@@ -16,7 +14,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    /* Updated for a more refined professional gradient */
     background: linear-gradient(135deg, #0d1414 0%, #00251a 100%);
     color: var(--text-color);
     line-height: 1.8;
@@ -44,18 +41,43 @@ nav a {
     margin: 0 15px;
     text-decoration: none;
     font-weight: 500;
+    position: relative;
     transition: color 0.3s ease;
 }
 
+/* Ye CSS sirf cursor laane par link ko green karega */
 nav a:hover {
     color: var(--primary-color);
+}
+
+/* Ye CSS navigation link ko tab tak green rakhega jab tak aap us section mein hain */
+nav a.active {
+    color: var(--primary-color);
+}
+
+/* Ye underline ka code hai */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Ye underline sirf hover aur active hone par dikhegi */
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
 }
 
 /* --------------------
    Hero Section
    -------------------- */
 #hero {
-    /* Updated to make the hero section full-width */
     max-width: none;
     margin: 0;
     
@@ -319,19 +341,19 @@ footer {
 }
 
 #studies .studies-content {
-    display: flex; /* Ye logo aur text ko ek line mein layega */
-    align-items: center; /* Ye content ko vertical center mein rakhega */
-    gap: 50px; /* Ye logo aur text ke beech mein space deta hai */
-    flex-wrap: wrap; /* Jab screen choti hogi, to content neeche aa jayega */
-    justify-content: center; /* Content ko center mein rakhta hai */
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #studies .studies-image img {
-    max-width: 150px; /* Logo ki size set karta hai */
+    max-width: 150px;
     height: auto;
     border-radius: 8px;
 }
 
 #studies .studies-text {
-    max-width: 600px; /* Text ki max width set karta hai */
+    max-width: 600px;
 }
