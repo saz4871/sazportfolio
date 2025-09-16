@@ -24,8 +24,8 @@ html {
 }
 
 /* --------------------
-   Sticky Header
-   -------------------- */
+    Sticky Header
+    -------------------- */
 header {
     background: var(--footer-bg);
     padding: 20px;
@@ -75,19 +75,49 @@ nav a.active::after {
 }
 
 /* --------------------
-   Hero Section
-   -------------------- */
+    Hero Section
+    -------------------- */
 #hero {
     max-width: none;
     margin: 0;
     
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('code.jpg') no-repeat center center/cover;
+    /* Video background ke liye naye properties */
+    position: relative; /* Video ko position karne ke liye zaroori hai */
+    overflow: hidden; /* Video ka extra hissa chupaane ke liye */
+    
     color: white;
     text-align: center;
     padding: 150px 20px;
-    background-size: cover;
-    background-position: center;
+}
+
+/* Video ke liye CSS rules */
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: blur(5px); /* Ye blur effect hai, value badha ya ghata sakte hain */
+}
+
+/* Content ko video ke upar laane aur blur video ke upar ek dark overlay dene ke liye */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Content ko overlay ke upar laane ke liye */
 }
 
 .hero-content h1 {
@@ -129,8 +159,8 @@ nav a.active::after {
 }
 
 /* --------------------
-   General Sections
-   -------------------- */
+    General Sections
+    -------------------- */
 section {
     padding: 80px 20px;
     max-width: 1100px;
@@ -149,8 +179,8 @@ h2 {
 }
 
 /* --------------------
-   About Section
-   -------------------- */
+    About Section
+    -------------------- */
 .about-container {
     display: flex;
     align-items: center;
@@ -177,8 +207,8 @@ h2 {
 }
 
 /* --------------------
-   Projects Section
-   -------------------- */
+    Projects Section
+    -------------------- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 1fr));
@@ -255,8 +285,8 @@ h2 {
 }
 
 /* --------------------
-   Skills Section
-   -------------------- */
+    Skills Section
+    -------------------- */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -281,8 +311,8 @@ h2 {
 }
 
 /* --------------------
-   Contact Section
-   -------------------- */
+    Contact Section
+    -------------------- */
 #contact p {
     text-align: center;
     font-size: 1.1em;
@@ -300,8 +330,8 @@ h2 {
 }
 
 /* --------------------
-   Footer
-   -------------------- */
+    Footer
+    -------------------- */
 footer {
     text-align: center;
     background: var(--footer-bg);
@@ -323,8 +353,8 @@ footer {
 }
 
 /* --------------------
-   Responsive Design
-   -------------------- */
+    Responsive Design
+    -------------------- */
 @media (max-width: 768px) {
     .about-container {
         flex-direction: column;
